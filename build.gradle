@@ -13,6 +13,9 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'jacoco'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -21,8 +24,12 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+checkstyle.toolVersion = '7.6'
+[checkstyleMain, checkstyleTest]*.ignoreFailures = true
+[findbugsMain, findbugsTest]*.ignoreFailures = true
+jacocoTestReport.reports.xml.enabled true
