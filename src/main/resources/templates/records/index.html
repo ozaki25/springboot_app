@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>listing records</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Listing Records</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="record : ${records}">
+            <td th:text="${record.id}"></td>
+            <td th:text="${record.name}"></td>
+            <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}(id=${record.id})}">Show</a></td>
+            <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a></td>
+            <td>
+              <form th:action="@{/records/{id}(id=${record.id})}" th:method="delete">
+                <input class="btn btn-default btn-xs" type="submit" value="destroy" />
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-default btn-xs" href="/records/new">New</a>
+    </div>
+  </body>
+</html>

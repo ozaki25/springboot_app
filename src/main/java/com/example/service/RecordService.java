@@ -16,7 +16,16 @@ public class RecordService {
     public List<Record> findAll() {
         return recordRepository.findAll();
     }
+
+    public Record findOne(Long id) {
+        return recordRepository.findOne(id);
+    }
+
     public Record save(Record record) {
         return recordRepository.save(record);
+    }
+
+    public void delete(Long id) {
+        recordRepository.delete(id);
     }
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>editing record</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Editing Record</h1>
+      <form th:action="@{/records/{id}(id=${record.id})}" th:method="put">
+        <div class="form-group">
+          <label class="control-label">Name</label>
+          <input class="form-control" type="text" name="name" th:value="${record.name}" />
+        </div>
+        <button class="btn btn-default btn-xs" type="submit">Submit</button>
+      </form>
+      <div class="pull-right">
+        <a class="btn btn-link btn-xs" href="/records">Back</a>
+      </div>
+    </div>
+  </body>
+</html>

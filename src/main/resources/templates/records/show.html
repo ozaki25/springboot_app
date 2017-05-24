@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>show record</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Show Record</h1>
+      <div>
+        <label>ID</label>
+        <p th:inline="text">[[${record.id}]]</p>
+      </div>
+      <div>
+        <label>Name</label>
+        <p th:inline="text">[[${record.name}]]</p>
+      </div>
+      <div>
+        <a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a>
+      </div>
+      <div class="pull-right">
+        <a class="btn btn-link btn-xs" href="/records">Back</a>
+      </div>
+    </div>
+  </body>
+</html>

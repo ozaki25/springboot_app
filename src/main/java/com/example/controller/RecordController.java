@@ -3,28 +3,64 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.model.Record;
 import com.example.service.RecordService;
 
-@RestController
+@Controller
 @RequestMapping("records")
 public class RecordController {
    @Autowired
     private RecordService recordService;
 
-    @GetMapping
-    public List<Record> index() {
-        return recordService.findAll();
+    @RequestMapping(method = RequestMethod.GET)
+    public String index(Model model) {
+        List<Record> records = recordService.findAll();
+        model.addAttribute("records", records);
+        return "records/index";
     }
 
-    @PostMapping
-    public Record create(@RequestBody Record record) {
-        return recordService.save(record);
+    @RequestMapping(value = "new", method = RequestMethod.GET)
+    public String newRecord() {
+        return "records/new";
+    }
+
+    @RequestMapping(value = "{id}/edit", method = RequestMethod.GET)
+    public String edit(@PathVariable Long id, Model model) {
+        Record record = recordService.findOne(id);
+        model.addAttribute("record", record);
+        return "records/edit";
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public String show(@PathVariable Long id, Model model) {
+        Record record = recordService.findOne(id);
+        model.addAttribute("record", record);
+        return "records/show";
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String create(@ModelAttribute Record record) {
+        recordService.save(record);
+        return "redirect:/records";
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    public String update(@PathVariable Long id, @ModelAttribute Record record) {
+        record.setId(id);
+        recordService.save(record);
+        return "redirect:/records";
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public String update(@PathVariable Long id) {
+        recordService.delete(id);
+        return "redirect:/records";
     }
 }
