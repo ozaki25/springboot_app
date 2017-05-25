@@ -11,35 +11,35 @@
     <div class="container">
       <h1>Show Record</h1>
       <div>
-        <label>ID</label>
+        <label>#</label>
         <p th:text="${record.id}"></p>
       </div>
       <div>
-        <label>Date</label>
+        <label>試合日</label>
         <p th:text="${#dates.format(record.date, 'yyyy/MM/dd')}"></p>
       </div>
       <div>
-        <label>Name</label>
+        <label>選手名</label>
         <p th:text="${record.name}"></p>
       </div>
       <div>
-        <label>PA</label>
+        <label>打席</label>
         <p th:text="${record.pa}"></p>
       </div>
       <div>
-        <label>Hit</label>
+        <label>安打</label>
         <p th:text="${record.hit}"></p>
       </div>
       <div>
-        <label>RBI</label>
+        <label>打点</label>
         <p th:text="${record.rbi}"></p>
       </div>
       <div>
-        <label>bb</label>
+        <label>四死球</label>
         <p th:text="${record.bb}"></p>
       </div>
       <div>
-        <label>K</label>
+        <label>三振</label>
         <p th:text="${record.k}"></p>
       </div>
       <div>

@@ -19,27 +19,27 @@
           <input class="js-use-datepicker form-control" type="text" name="date" th:value="${#dates.format(record.date, 'yyyy/MM/dd')}" />
         </div>
         <div class="form-group">
-          <label class="control-label">Name</label>
+          <label class="control-label">選手名</label>
           <input class="form-control" type="text" name="name" th:value="${record.name}" />
         </div>
         <div class="form-group">
-          <label class="control-laebl">PA</label>
+          <label class="control-laebl">打席</label>
           <input class="form-control" type="number" name="pa" th:value="${record.pa}" />
         </div>
         <div class="form-group">
-          <label class="control-laebl">Hit</label>
+          <label class="control-laebl">安打</label>
           <input class="form-control" type="number" name="hit" th:value="${record.hit}" />
         </div>
         <div class="form-group">
-          <label class="control-laebl">RBI</label>
+          <label class="control-laebl">打点</label>
           <input class="form-control" type="number" name="rbi" th:value="${record.rbi}" />
         </div>
         <div class="form-group">
-          <label class="control-laebl">BB</label>
+          <label class="control-laebl">四死球</label>
           <input class="form-control" type="number" name="bb" th:value="${record.bb}" />
         </div>
         <div class="form-group">
-          <label class="control-laebl">K</label>
+          <label class="control-laebl">三振</label>
           <input class="form-control" type="number" name="k" th:value="${record.k}" />
         </div>
         <button class="btn btn-default btn-xs" type="submit">Submit</button>
