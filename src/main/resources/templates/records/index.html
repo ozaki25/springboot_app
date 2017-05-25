@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
   </head>
   <body>
     <div class="container">
@@ -40,7 +41,7 @@
             <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a></td>
             <td>
               <form th:action="@{/records/{id}(id=${record.id})}" th:method="delete">
-                <input class="btn btn-default btn-xs" type="submit" value="destroy" />
+                <input class="btn btn-default btn-xs destroy-button" type="submit" value="destroy" />
               </form>
             </td>
           </tr>

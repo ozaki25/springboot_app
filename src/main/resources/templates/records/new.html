@@ -8,7 +8,7 @@
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bootstrap-datepicker.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/js/record_form.js"></script>
   </head>
   <body>
     <div class="container">
@@ -18,29 +18,29 @@
           <label class="control-laebl">試合日</label>
           <input class="js-use-datepicker form-control" type="text" name="date" />
         </div>
-        <div class="form-group">
-          <label class="control-laebl">選手名</label>
+         <div class="form-group">
+          <label class="control-label">選手名</label>
           <input class="form-control" type="text" name="name" />
         </div>
-        <div class="form-group">
+       <div class="form-group">
           <label class="control-laebl">打席</label>
-          <input class="form-control" type="number" name="pa" />
+          <input class="form-control" type="number" name="pa" th:value="${record.pa}" />
         </div>
         <div class="form-group">
           <label class="control-laebl">安打</label>
-          <input class="form-control" type="number" name="hit" />
+          <input class="form-control" type="number" name="hit" th:value="${record.hit}" />
         </div>
         <div class="form-group">
           <label class="control-laebl">打点</label>
-          <input class="form-control" type="number" name="rbi" />
+          <input class="form-control" type="number" name="rbi" th:value="${record.rbi}" />
         </div>
         <div class="form-group">
           <label class="control-laebl">四死球</label>
-          <input class="form-control" type="number" name="bb" />
+          <input class="form-control" type="number" name="bb" th:value="${record.bb}" />
         </div>
         <div class="form-group">
           <label class="control-laebl">三振</label>
-          <input class="form-control" type="number" name="k" />
+          <input class="form-control" type="number" name="k" th:value="${record.k}" />
         </div>
         <button class="btn btn-default btn-xs" type="submit">Submit</button>
       </form>

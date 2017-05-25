@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,18 +15,40 @@ public class Record {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull
     @DateTimeFormat(pattern="yyyy/MM/dd")
     private Date date;
+
+    @NotNull
     private String name;
+
+    @NotNull
     @Column(name = "plate_appearances")
     private Integer pa;
+
+    @NotNull
     private Integer hit;
+
+    @NotNull
     @Column(name = "runs_batted_in")
     private Integer rbi;
+
+    @NotNull
     @Column(name = "base_on_balls")
     private Integer bb;
+
+    @NotNull
     @Column(name = "strikeouts")
     private Integer k;
+
+    public Record() {
+        this.pa = 0;
+        this.hit = 0;
+        this.rbi = 0;
+        this.bb = 0;
+        this.k = 0;
+    }
 
     public Long getId() {
         return this.id;

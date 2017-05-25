@@ -27,7 +27,8 @@ public class RecordController {
     }
 
     @RequestMapping(value = "new", method = RequestMethod.GET)
-    public String newRecord() {
+    public String newRecord(Model model) {
+        model.addAttribute("record", new Record());
         return "records/new";
     }
 
