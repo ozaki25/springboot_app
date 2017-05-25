@@ -14,6 +14,7 @@
         <thead>
           <tr>
             <th>ID</th>
+            <th>Date</th>
             <th>Name</th>
             <th></th>
             <th></th>
@@ -23,6 +24,7 @@
         <tbody>
           <tr th:each="record : ${records}">
             <td th:text="${record.id}"></td>
+            <td th:text="${#dates.format(record.date, 'yyyy/MM/dd')}"></td>
             <td th:text="${record.name}"></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}(id=${record.id})}">Show</a></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a></td>

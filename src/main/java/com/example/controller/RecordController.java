@@ -47,6 +47,7 @@ public class RecordController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String create(@ModelAttribute Record record) {
+        System.out.println(record.getDate());
         recordService.save(record);
         return "redirect:/records";
     }

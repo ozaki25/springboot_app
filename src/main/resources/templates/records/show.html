@@ -12,11 +12,15 @@
       <h1>Show Record</h1>
       <div>
         <label>ID</label>
-        <p th:inline="text">[[${record.id}]]</p>
+        <p th:text="${record.id}"></p>
+      </div>
+      <div>
+        <label>Date</label>
+        <p th:text="${#dates.format(record.date, 'yyyy/MM/dd')}"></p>
       </div>
       <div>
         <label>Name</label>
-        <p th:inline="text">[[${record.name}]]</p>
+        <p th:ttext="${record.name}"></p>
       </div>
       <div>
         <a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a>
