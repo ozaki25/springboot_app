@@ -20,7 +20,27 @@
       </div>
       <div>
         <label>Name</label>
-        <p th:ttext="${record.name}"></p>
+        <p th:text="${record.name}"></p>
+      </div>
+      <div>
+        <label>PA</label>
+        <p th:text="${record.pa}"></p>
+      </div>
+      <div>
+        <label>Hit</label>
+        <p th:text="${record.hit}"></p>
+      </div>
+      <div>
+        <label>RBI</label>
+        <p th:text="${record.rbi}"></p>
+      </div>
+      <div>
+        <label>bb</label>
+        <p th:text="${record.bb}"></p>
+      </div>
+      <div>
+        <label>K</label>
+        <p th:text="${record.k}"></p>
       </div>
       <div>
         <a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a>

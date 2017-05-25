@@ -16,6 +16,11 @@
             <th>ID</th>
             <th>Date</th>
             <th>Name</th>
+            <th>PA</th>
+            <th>Hit</th>
+            <th>RBI</th>
+            <th>BB</th>
+            <th>K</th>
             <th></th>
             <th></th>
             <th></th>
@@ -26,6 +31,11 @@
             <td th:text="${record.id}"></td>
             <td th:text="${#dates.format(record.date, 'yyyy/MM/dd')}"></td>
             <td th:text="${record.name}"></td>
+            <td th:text="${record.pa}"></td>
+            <td th:text="${record.hit}"></td>
+            <td th:text="${record.rbi}"></td>
+            <td th:text="${record.bb}"></td>
+            <td th:text="${record.k}"></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}(id=${record.id})}">Show</a></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a></td>
             <td>
