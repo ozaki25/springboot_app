@@ -23,6 +23,8 @@ public class ApplicationTests {
 
     @Test
     public void index() throws Exception {
-        mockMvc.perform(get("/")).andExpect(redirectedUrl("/records"));
+        mockMvc.perform(get("/"))
+            .andExpect(status().isFound())
+            .andExpect(redirectedUrl("/records"));
     }
 }

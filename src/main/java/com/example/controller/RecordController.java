@@ -61,7 +61,7 @@ public class RecordController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public String update(@PathVariable Long id) {
+    public String destroy(@PathVariable Long id) {
         recordService.delete(id);
         return "redirect:/records";
     }

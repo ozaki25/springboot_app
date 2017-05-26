@@ -50,6 +50,17 @@ public class Record {
         this.k = 0;
     }
 
+    public Record(Date date, String name, Integer pa,
+                  Integer hit, Integer rbi, Integer bb, Integer k) {
+        this.date = new Date(date.getTime());
+        this.name = name;
+        this.pa = pa;
+        this.hit = hit;
+        this.rbi = rbi;
+        this.bb = bb;
+        this.k = k;
+    }
+
     public Long getId() {
         return this.id;
     }
