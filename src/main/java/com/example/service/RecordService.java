@@ -28,4 +28,8 @@ public class RecordService {
     public void delete(Long id) {
         recordRepository.delete(id);
     }
+
+    public void deleteAll() {
+        recordRepository.deleteAll();
+    }
 }

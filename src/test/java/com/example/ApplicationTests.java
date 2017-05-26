@@ -2,6 +2,7 @@ package com.example;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Test;
@@ -25,6 +26,7 @@ public class ApplicationTests {
     public void index() throws Exception {
         mockMvc.perform(get("/"))
             .andExpect(status().isFound())
-            .andExpect(redirectedUrl("/records"));
+            .andExpect(redirectedUrl("/records"))
+            .andDo(print());
     }
 }
