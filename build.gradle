@@ -17,8 +17,8 @@ apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'jacoco'
 
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+jar.baseName = 'app'
 
 repositories {
 	mavenCentral()
@@ -33,6 +33,7 @@ dependencies {
     runtime('org.springframework.boot:spring-boot-devtools')
 }
 
+springBoot.executable = true
 checkstyle.toolVersion = '7.6'
 [checkstyleMain, checkstyleTest]*.ignoreFailures = true
 [findbugsMain, findbugsTest]*.ignoreFailures = true

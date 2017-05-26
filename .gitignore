@@ -18,7 +18,9 @@
 
 ### NetBeans ###
 nbproject/private/
-build/
+build/*
+!build/libs
+!build/libs/app.jar
 nbbuild/
 dist/
 nbdist/
