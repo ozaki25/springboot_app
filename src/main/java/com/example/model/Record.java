@@ -17,7 +17,7 @@ public class Record {
     private Long id;
 
     @NotNull
-    @DateTimeFormat(pattern="yyyy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date date;
 
     @NotNull
@@ -59,11 +59,11 @@ public class Record {
     }
 
     public Date getDate() {
-        return this.date;
+        return (Date) this.date.clone();
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date = new Date(date.getTime());
     }
 
     public String getName() {

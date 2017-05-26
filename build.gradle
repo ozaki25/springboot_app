@@ -37,3 +37,9 @@ checkstyle.toolVersion = '7.6'
 [checkstyleMain, checkstyleTest]*.ignoreFailures = true
 [findbugsMain, findbugsTest]*.ignoreFailures = true
 jacocoTestReport.reports.xml.enabled true
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}

@@ -1,7 +1,6 @@
 package com.example;
 
 
-import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -23,8 +22,7 @@ public class ApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    public void hello() throws Exception {
-        // N.B. jsoup can be useful for asserting HTML content
-        mockMvc.perform(get("/")).andExpect(content().string(containsString("Hello World!")));
+    public void index() throws Exception {
+        mockMvc.perform(get("/")).andExpect(redirectedUrl("/records"));
     }
 }
