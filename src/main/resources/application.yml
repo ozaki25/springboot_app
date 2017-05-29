@@ -1,0 +1,10 @@
+spring.thymeleaf.cache: false
+spring.datasource.url: jdbc:mysql://localhost/springboot-sample?characterEncoding=UTF8
+spring.datasource.username: root
+spring.datasource.password: ""
+# spring.datasource.url: jdbc:mysql://ozaki-spring-sample.ct14oecd9j8v.ap-northeast-1.rds.amazonaws.com:3306
+# spring.datasource.username: ozaki
+# spring.datasource.password: ozaki
+spring.datasource.driver-class-name: com.mysql.jdbc.Driver
+spring.jpa.database: mysql
+spring.jpa.hibernate.ddl-auto: update
