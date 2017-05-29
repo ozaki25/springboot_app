@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.model.Record;
-import com.example.repository.RecordRepository;
+import com.example.domain.Record;
+import com.example.domain.RecordRepository;
 
 @Service
 public class RecordService {
