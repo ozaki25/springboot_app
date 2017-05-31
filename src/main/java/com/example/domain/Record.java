@@ -57,6 +57,16 @@ public class Record {
         this.k = 0;
     }
 
+    public Record(Date date, String name, int pa, int hit, int rbi, int bb, int k) {
+        this.date = date;
+        this.name = name;
+        this.pa = pa;
+        this.hit = hit;
+        this.rbi = rbi;
+        this.bb = bb;
+        this.k = k;
+    }
+
     public Long getId() {
         return this.id;
     }
