@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.Record;
 import com.example.domain.RecordRepository;
+import com.example.web.RecordForm;
 
 @Service
 public class RecordService {
@@ -23,6 +24,19 @@ public class RecordService {
 
     public Record save(Record record) {
         return recordRepository.save(record);
+    }
+
+    public Record save(RecordForm recordForm) {
+        Long id = recordForm.getId();
+        Record record = id == null ? new Record() : this.findOne(id);
+        record.setAttributes(recordForm.getDate(),
+                             recordForm.getName(),
+                             recordForm.getPa(),
+                             recordForm.getHit(),
+                             recordForm.getRbi(),
+                             recordForm.getBb(),
+                             recordForm.getK());
+        return this.save(record);
     }
 
     public void delete(Long id) {

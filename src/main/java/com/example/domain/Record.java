@@ -1,13 +1,17 @@
 package com.example.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -20,7 +24,7 @@ public class Record {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date date;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
     @NotNull
@@ -42,23 +46,15 @@ public class Record {
     @Column(name = "strikeouts")
     private Integer k;
 
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
     public Record() {
         this.pa = 0;
         this.hit = 0;
         this.rbi = 0;
         this.bb = 0;
         this.k = 0;
-    }
-
-    public Record(Date date, String name, Integer pa,
-                  Integer hit, Integer rbi, Integer bb, Integer k) {
-        this.date = new Date(date.getTime());
-        this.name = name;
-        this.pa = pa;
-        this.hit = hit;
-        this.rbi = rbi;
-        this.bb = bb;
-        this.k = k;
     }
 
     public Long getId() {
@@ -70,11 +66,11 @@ public class Record {
     }
 
     public Date getDate() {
-        return (Date) this.date.clone();
+        return this.date;
     }
 
     public void setDate(Date date) {
-        this.date = new Date(date.getTime());
+        this.date = date;
     }
 
     public String getName() {
@@ -123,5 +119,36 @@ public class Record {
 
     public void setK(Integer k) {
         this.k = k;
+    }
+
+    public Timestamp getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setAttributes(Date date, String name, Integer pa,
+                              Integer hit, Integer rbi, Integer bb, Integer k) {
+        this.date = date;
+        this.name = name;
+        this.pa = pa;
+        this.hit = hit;
+        this.rbi = rbi;
+        this.bb = bb;
+        this.k = k;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        Timestamp ts = new Timestamp((new Date()).getTime());
+        this.createdAt = ts;
+        this.updatedAt = ts;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = new Timestamp((new Date()).getTime());
     }
 }

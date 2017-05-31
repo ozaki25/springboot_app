@@ -22,6 +22,8 @@
             <th>打点</th>
             <th>四死球</th>
             <th>三振</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
             <th></th>
             <th></th>
             <th></th>
@@ -37,6 +39,8 @@
             <td th:text="${record.rbi}"></td>
             <td th:text="${record.bb}"></td>
             <td th:text="${record.k}"></td>
+            <td th:text="${#dates.format(record.createdAt, 'yyyy/MM/dd hh:mm')}"></td>
+            <td th:text="${#dates.format(record.updatedAt, 'yyyy/MM/dd hh:mm')}"></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}(id=${record.id})}">Show</a></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/records/{id}/edit(id=${record.id})}">Edit</a></td>
             <td>

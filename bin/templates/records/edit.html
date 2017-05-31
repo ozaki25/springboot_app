@@ -13,34 +13,41 @@
   <body>
     <div class="container">
       <h1>Editing Record</h1>
-      <form th:action="@{/records/{id}(id=${record.id})}" th:method="put">
-        <div class="form-group">
-          <label class="control-laebl">Date</label>
-          <input class="js-use-datepicker form-control" type="text" name="date" th:value="${#dates.format(record.date, 'yyyy/MM/dd')}" />
+      <form th:action="@{/records/{id}(id=*{id})}" th:object="${recordForm}" th:method="put">
+        <div class="form-group" th:classappend="${#fields.hasErrors('date')}? has-error">
+          <label class="control-label">試合日</label>
+          <input class="js-use-datepicker form-control" type="text" name="date" th:value="*{date}? *{#dates.format(date, 'yyyy/MM/dd')}" />
+          <span class="text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group" th:classappend="${#fields.hasErrors('name')}? has-error">
           <label class="control-label">選手名</label>
-          <input class="form-control" type="text" name="name" th:value="${record.name}" />
+          <input class="form-control" type="text" name="name" th:value="*{name}" />
+          <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+       </div>
+       <div class="form-group" th:classappend="${#fields.hasErrors('pa')}? has-error">
+          <label class="control-label">打席</label>
+          <input class="form-control" type="number" name="pa" th:value="*{pa}" />
+          <span class="text-danger" th:if="${#fields.hasErrors('pa')}" th:errors="*{pa}"></span>
         </div>
-        <div class="form-group">
-          <label class="control-laebl">打席</label>
-          <input class="form-control" type="number" name="pa" th:value="${record.pa}" />
+        <div class="form-group" th:classappend="${#fields.hasErrors('hit')}? has-error">
+          <label class="control-label">安打</label>
+          <input class="form-control" type="number" name="hit" th:value="*{hit}" />
+          <span class="text-danger" th:if="${#fields.hasErrors('hit')}" th:errors="*{hit}"></span>
         </div>
-        <div class="form-group">
-          <label class="control-laebl">安打</label>
-          <input class="form-control" type="number" name="hit" th:value="${record.hit}" />
+        <div class="form-group" th:classappend="${#fields.hasErrors('rbi')}? has-error">
+          <label class="control-label">打点</label>
+          <input class="form-control" type="number" name="rbi" th:value="*{rbi}" />
+          <span class="text-danger" th:if="${#fields.hasErrors('rbi')}" th:errors="*{rbi}"></span>
         </div>
-        <div class="form-group">
-          <label class="control-laebl">打点</label>
-          <input class="form-control" type="number" name="rbi" th:value="${record.rbi}" />
+        <div class="form-group" th:classappend="${#fields.hasErrors('bb')}? has-error">
+          <label class="control-label">四死球</label>
+          <input class="form-control" type="number" name="bb" th:value="*{bb}" />
+          <span class="text-danger" th:if="${#fields.hasErrors('bb')}" th:errors="*{bb}"></span>
         </div>
-        <div class="form-group">
-          <label class="control-laebl">四死球</label>
-          <input class="form-control" type="number" name="bb" th:value="${record.bb}" />
-        </div>
-        <div class="form-group">
-          <label class="control-laebl">三振</label>
-          <input class="form-control" type="number" name="k" th:value="${record.k}" />
+        <div class="form-group" th:classappend="${#fields.hasErrors('k')}? has-error">
+          <label class="control-label">三振</label>
+          <input class="form-control" type="number" name="k" th:value="*{k}" />
+          <span class="text-danger" th:if="${#fields.hasErrors('k')}" th:errors="*{k}"></span>
         </div>
         <button class="btn btn-default btn-xs" type="submit">Submit</button>
       </form>

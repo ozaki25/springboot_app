@@ -1,11 +1,11 @@
 package com.example.web;
 
-import java.util.List;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,21 +21,20 @@ public class RecordController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        List<Record> records = recordService.findAll();
-        model.addAttribute("records", records);
+        model.addAttribute("records", recordService.findAll());
         return "records/index";
     }
 
     @RequestMapping(value = "new", method = RequestMethod.GET)
-    public String newRecord(Model model) {
-        model.addAttribute("record", new Record());
+    public String newRecord(RecordForm recordForm) {
+        recordForm.setRecord(new Record());
         return "records/new";
     }
 
     @RequestMapping(value = "{id}/edit", method = RequestMethod.GET)
-    public String edit(@PathVariable Long id, Model model) {
+    public String edit(@PathVariable Long id, RecordForm recordForm) {
         Record record = recordService.findOne(id);
-        model.addAttribute("record", record);
+        recordForm.setRecord(record);
         return "records/edit";
     }
 
@@ -47,15 +46,17 @@ public class RecordController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String create(@ModelAttribute Record record) {
-        recordService.save(record);
+    public String create(@Valid RecordForm recordForm, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) return "records/new";
+        recordService.save(recordForm);
         return "redirect:/records";
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public String update(@PathVariable Long id, @ModelAttribute Record record) {
-        record.setId(id);
-        recordService.save(record);
+    public String update(@PathVariable Long id, @Valid RecordForm recordForm, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) return "records/edit";
+        recordForm.setId(id);
+        recordService.save(recordForm);
         return "redirect:/records";
     }
 
