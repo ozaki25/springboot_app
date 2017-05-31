@@ -99,7 +99,6 @@ Finally, it is worth reading the documentation.
 
 <!-- Checks for Size Violations.                    -->
 <!-- See http://checkstyle.sf.net/config_sizes.html -->
-<module name="LineLength"/>
 <module name="MethodLength"/>
 <module name="ParameterNumber"/>
 
@@ -131,7 +130,6 @@ Finally, it is worth reading the documentation.
 
 <!-- Checks for common coding problems               -->
 <!-- See http://checkstyle.sf.net/config_coding.html -->
-<module name="AvoidInlineConditionals"/>
 <module name="EmptyStatement"/>
 <module name="EqualsHashCode"/>
 <module name="IllegalInstantiation"/>

@@ -47,14 +47,18 @@ public class RecordController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String create(@Valid RecordForm recordForm, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) return "records/new";
+        if (bindingResult.hasErrors()) {
+            return "records/new";
+        }
         recordService.save(recordForm);
         return "redirect:/records";
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public String update(@PathVariable Long id, @Valid RecordForm recordForm, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) return "records/edit";
+        if (bindingResult.hasErrors()) {
+            return "records/edit";
+        }
         recordForm.setId(id);
         recordService.save(recordForm);
         return "redirect:/records";

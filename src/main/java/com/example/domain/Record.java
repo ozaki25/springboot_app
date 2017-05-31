@@ -58,7 +58,7 @@ public class Record {
     }
 
     public Record(Date date, String name, int pa, int hit, int rbi, int bb, int k) {
-        this.date = date;
+        this.date = date == null ? null : (Date) date.clone();
         this.name = name;
         this.pa = pa;
         this.hit = hit;
@@ -76,11 +76,11 @@ public class Record {
     }
 
     public Date getDate() {
-        return this.date;
+        return this.date == null ? null : (Date) this.date.clone();
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date = date == null ? null : (Date) date.clone();
     }
 
     public String getName() {
@@ -132,16 +132,16 @@ public class Record {
     }
 
     public Timestamp getCreatedAt() {
-        return this.createdAt;
+        return this.createdAt == null ? null : new Timestamp(this.createdAt.getTime());
     }
 
     public Timestamp getUpdatedAt() {
-        return this.updatedAt;
+        return this.updatedAt == null ? null : new Timestamp(this.updatedAt.getTime());
     }
 
     public void setAttributes(Date date, String name, Integer pa,
                               Integer hit, Integer rbi, Integer bb, Integer k) {
-        this.date = date;
+        this.date = date == null ? null : (Date) date.clone();
         this.name = name;
         this.pa = pa;
         this.hit = hit;

@@ -42,7 +42,8 @@ public class RecordForm {
 
     public void setRecord(Record record) {
         this.id = record.getId();
-        this.date = record.getDate();
+        Date date = record.getDate();
+        this.date = date == null ? null : (Date) date.clone();
         this.name = record.getName();
         this.pa = record.getPa();
         this.hit = record.getHit();
@@ -60,11 +61,11 @@ public class RecordForm {
     }
 
     public Date getDate() {
-        return this.date;
+        return this.date == null ? null : (Date) this.date.clone();
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date = date == null ? null : (Date) date.clone();
     }
 
     public String getName() {
