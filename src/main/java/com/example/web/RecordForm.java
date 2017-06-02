@@ -41,15 +41,14 @@ public class RecordForm {
     private Integer k;
 
     public void setRecord(Record record) {
-        this.id = record.getId();
-        Date date = record.getDate();
-        this.date = date == null ? null : (Date) date.clone();
-        this.name = record.getName();
-        this.pa = record.getPa();
-        this.hit = record.getHit();
-        this.rbi = record.getRbi();
-        this.bb = record.getBb();
-        this.k = record.getK();
+        this.setId(record.getId());
+        this.setDate(record.getDate());
+        this.setName(record.getName());
+        this.setPa(record.getPa());
+        this.setHit(record.getHit());
+        this.setRbi(record.getRbi());
+        this.setBb(record.getBb());
+        this.setK(record.getK());
     }
 
     public Long getId() {

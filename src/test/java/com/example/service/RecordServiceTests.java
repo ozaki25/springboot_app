@@ -20,9 +20,11 @@ import com.example.web.RecordForm;
 public class RecordServiceTests {
     private static final Integer RECORD_SIZE = 3;
     private static final Date DUMMY_DATE = new Date();
+    private static final Date DUMMY_DATE_2 = new Date(1L);
     private static final String DUMMY_NAME = "ozaki";
     private static final String DUMMY_NAME_2 = "test";
     private static final Integer DUMMY_VALUE = 1;
+    private static final Integer DUMMY_VALUE_2 = 2;
 
     @Autowired
     private RecordService recordService;
@@ -52,6 +54,13 @@ public class RecordServiceTests {
     public void save() throws Exception {
         Record result = recordService.save(new Record(DUMMY_DATE, DUMMY_NAME, DUMMY_VALUE, DUMMY_VALUE, DUMMY_VALUE, DUMMY_VALUE, DUMMY_VALUE));
         assertThat(result.getId()).isNotNull();
+        assertThat(result.getDate()).isEqualTo(DUMMY_DATE);
+        assertThat(result.getName()).isEqualTo(DUMMY_NAME);
+        assertThat(result.getPa()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getHit()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getRbi()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getBb()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getK()).isEqualTo(DUMMY_VALUE);
     }
 
     @Test
@@ -65,7 +74,15 @@ public class RecordServiceTests {
         recordForm.setBb(DUMMY_VALUE);
         recordForm.setK(DUMMY_VALUE);
         Record result = recordService.save(recordForm);
+
         assertThat(result.getId()).isNotNull();
+        assertThat(result.getDate()).isEqualTo(DUMMY_DATE);
+        assertThat(result.getName()).isEqualTo(DUMMY_NAME);
+        assertThat(result.getPa()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getHit()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getRbi()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getBb()).isEqualTo(DUMMY_VALUE);
+        assertThat(result.getK()).isEqualTo(DUMMY_VALUE);
     }
 
     @Test
@@ -73,15 +90,22 @@ public class RecordServiceTests {
         Record record = recordService.save(new Record(DUMMY_DATE, DUMMY_NAME, DUMMY_VALUE, DUMMY_VALUE, DUMMY_VALUE, DUMMY_VALUE, DUMMY_VALUE));
         RecordForm recordForm = new RecordForm();
         recordForm.setId(record.getId());
-        recordForm.setDate(DUMMY_DATE);
+        recordForm.setDate(DUMMY_DATE_2);
         recordForm.setName(DUMMY_NAME_2);
-        recordForm.setPa(DUMMY_VALUE);
-        recordForm.setHit(DUMMY_VALUE);
-        recordForm.setRbi(DUMMY_VALUE);
-        recordForm.setBb(DUMMY_VALUE);
-        recordForm.setK(DUMMY_VALUE);
+        recordForm.setPa(DUMMY_VALUE_2);
+        recordForm.setHit(DUMMY_VALUE_2);
+        recordForm.setRbi(DUMMY_VALUE_2);
+        recordForm.setBb(DUMMY_VALUE_2);
+        recordForm.setK(DUMMY_VALUE_2);
         Record result = recordService.save(recordForm);
         assertThat(result.getName()).isEqualTo(DUMMY_NAME_2);
+        assertThat(result.getDate()).isEqualTo(DUMMY_DATE_2);
+        assertThat(result.getName()).isEqualTo(DUMMY_NAME_2);
+        assertThat(result.getPa()).isEqualTo(DUMMY_VALUE_2);
+        assertThat(result.getHit()).isEqualTo(DUMMY_VALUE_2);
+        assertThat(result.getRbi()).isEqualTo(DUMMY_VALUE_2);
+        assertThat(result.getBb()).isEqualTo(DUMMY_VALUE_2);
+        assertThat(result.getK()).isEqualTo(DUMMY_VALUE_2);
     }
 
     @Test

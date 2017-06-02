@@ -16,7 +16,7 @@ import com.example.service.RecordService;
 @Controller
 @RequestMapping("records")
 public class RecordController {
-   @Autowired
+    @Autowired
     private RecordService recordService;
 
     @RequestMapping(method = RequestMethod.GET)
