@@ -139,17 +139,6 @@ public class Record {
         return this.updatedAt == null ? null : new Timestamp(this.updatedAt.getTime());
     }
 
-    public void setAttributes(Date date, String name, Integer pa,
-                              Integer hit, Integer rbi, Integer bb, Integer k) {
-        this.date = date == null ? null : (Date) date.clone();
-        this.name = name;
-        this.pa = pa;
-        this.hit = hit;
-        this.rbi = rbi;
-        this.bb = bb;
-        this.k = k;
-    }
-
     @PrePersist
     public void prePersist() {
         Timestamp ts = new Timestamp((new Date()).getTime());

@@ -29,13 +29,13 @@ public class RecordService {
     public Record save(RecordForm recordForm) {
         Long id = recordForm.getId();
         Record record = id == null ? new Record() : this.findOne(id);
-        record.setAttributes(recordForm.getDate(),
-                             recordForm.getName(),
-                             recordForm.getPa(),
-                             recordForm.getHit(),
-                             recordForm.getRbi(),
-                             recordForm.getBb(),
-                             recordForm.getK());
+        record.setDate(recordForm.getDate());
+        record.setName(recordForm.getName());
+        record.setPa(recordForm.getPa());
+        record.setHit(recordForm.getHit());
+        record.setRbi(recordForm.getRbi());
+        record.setBb(recordForm.getBb());
+        record.setK(recordForm.getK());
         return this.save(record);
     }
 

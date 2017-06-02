@@ -91,6 +91,14 @@ public class RecordControllerTests {
     }
 
     @Test
+    public void createInvalid() throws Exception {
+        mockMvc.perform(post("/records"))
+            .andExpect(view().name("records/new"))
+            .andExpect(status().isOk())
+            .andDo(print());
+    }
+
+    @Test
     public void update() throws Exception {
         Record record = recordService.save(new Record(new Date(), "ozaki", 1, 1, 1, 1, 1));
         mockMvc.perform(
@@ -104,6 +112,15 @@ public class RecordControllerTests {
                 .param("k", "1"))
             .andExpect(status().isFound())
             .andExpect(redirectedUrl("/records"))
+            .andDo(print());
+    }
+
+    @Test
+    public void updateInvalid() throws Exception {
+        Record record = recordService.save(new Record(new Date(), "ozaki", 1, 1, 1, 1, 1));
+        mockMvc.perform(put("/records/" + record.getId()))
+            .andExpect(view().name("records/edit"))
+            .andExpect(status().isOk())
             .andDo(print());
     }
 
