@@ -6,5 +6,5 @@ image_resource:
   source: {repository: busybox}
 
 run:
-  path: cat
-  args: [build.gradle]
+  path: ls
+  args: [-al]
