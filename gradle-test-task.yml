@@ -5,6 +5,9 @@ image_resource:
   type: docker-image
   source: {repository: busybox}
 
+inputs:
+- name: resource-ozaki
+
 run:
-  path: ls
-  args: [-al]
+  path: resource-ozaki/gradlew
+
